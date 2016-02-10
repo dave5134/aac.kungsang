@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Data Binding</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+  <!-- Navigation Bar-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">AAHC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="active"><a href="angular.html"> Angular Features</a></li>
+            <li><a href="dataBinding.html"> Data Binding</a></li>
+            <li><a href="#"> No Content</a></li>
+          </ul>
+        </li>
+        <li ><a href="about.html"> Misc</a></li>
+        <li><a href="#"> Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div><!--End navbar header-->
+  </div><!--End container-fluid-->
+</nav><!-- End navbar-->
+<div class="container">
+<div class="alert alert-success">
+<h1>I am trying to show how two way data binding works. </h1>
+    </div>
+    <div class="alert alert-info">
+<h4>If you type in the field of text area it will automatically be updated in the view. Try it for yourself. </h4><br>
+    </div>
+
+<div ng-app="myModule">
+<div ng-controller="myController">
+       <div class="alert alert-danger">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input type="text" ng-model="employee.firstName"/>
+                </td>
+            </tr>
+            <tr>
+                <td> Last Name</td>
+                <td>
+                    <input type="text" ng-model="employee.lastName"/>
+                </td>
+            </tr>
+             <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="text" ng-model="employee.gender"/>
+                </td>
+            </tr>
+
+            </table>
+    </div>
+            <br>
+            <div class="alert alert-info">
+            <table>
+            <tr>
+                <td>First Name: </td>
+                <td>
+                    {{ employee.firstName }}
+                </td>
+            </tr>
+            <tr>
+                <td> Last Name: </td>
+                <td>
+                    {{ employee.lastName }}
+                </td>
+            </tr>
+             <tr>
+                <td>Gender: </td>
+                <td>
+                    {{ employee.gender }}
+                </td>
+            </tr>
+
+            </table>
+    </div><!--end alert warrning-->
+   </div>    <!--end controller-->     
+        
+    </div><!--end module-->
+    
+</div><!--end container-->
+
+
+
+
+     <script>
+    var myApp=angular
+            .module("myModule",[])
+            .controller("myController", function($scope){
+                var employee = {
+                    firstName:"Devendra",
+                    lastName:"Prasai",
+                    gender:"Male"                    
+                };
+                $scope.employee = employee;
+            });
+    
+    </script>
+    
+    </body>
+</html>

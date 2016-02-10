@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Angular Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+    
+  </style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+  <!-- Navigation Bar-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">AAHC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="active"><a href="angular.html"> Angular Features</a></li>
+            <li><a href="dataBinding.html"> Data Binding</a></li>
+            <li><a href="#">  Nothing</a></li>
+          </ul>
+        </li>
+        <li ><a href="about.html"> Misc</a></li>
+        <li><a href="#"> Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div><!--End navbar header-->
+  </div><!--End container-fluid-->
+</nav><!-- End navbar-->
+
+
+<div class="container">
+<div class="alert alert-danger">
+<h1>Interesting feature of Angular</h1>
+
+<p>If you click on the column name it will sort by ascending order.</p>
+    </div>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+<div class="alert alert-info">
+<table border="1" width="100%">
+<tr>
+<th ng-click="orderByMe('name')">Name</th>
+<th ng-click="orderByMe('country')">Country</th>
+</tr>
+<tr ng-repeat="x in names | orderBy:myOrderBy">
+<td>{{x.name}}</td>
+<td>{{x.country}}</td>
+</tr>
+</table>
+    </div>
+<br>
+
+        
+        
+    </div><!--end controller-->
+    
+</div><!--end module-->
+
+
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {name:'Dave',country:'USA'},
+        {name:'Carl',country:'Canada'},
+        {name:'Mary',country:'England'},
+        {name:'Henry',country:'Norway'},
+        {name:'Donald',country:'Denmark'},
+        {name:'Gary',country:'Sweden'},
+        {name:'Brandy',country:'France'},
+        {name:'Devendra',country:'Nepal'},
+        {name:'Silvio',country:'Italy'}
+        ];
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
+});
+</script>
+
+</div><!--end container-->
+</body>
+</html>
